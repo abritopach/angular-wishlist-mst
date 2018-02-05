@@ -114,8 +114,10 @@ it('should calculate the total price of a wishlist', () => {
 
     expect(changed).toBe(0);
     console.log(list.getTotalPrice());
+
     list.items[0].changeName('Test');
     expect(changed).toBe(0);
+
     list.items[0].changePrice(10);
-    expect(changed).toBe(1);
+    expect(changed).toBe(0);
 });
