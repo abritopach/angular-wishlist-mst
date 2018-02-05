@@ -1,5 +1,6 @@
 <div class="list">
-  <ul *ngFor="let item of wishList.items || async">
-    <app-wish-list-item [item]="item"></app-wish-list-item>
-  </ul>
+  <mat-card *ngFor="let item of wishList.items || async">
+      <app-wish-list-item [item]="item"></app-wish-list-item>
+  </mat-card>
+  <p>Total: {{wishList.getTotalPrice()}} €</p>
 </div>

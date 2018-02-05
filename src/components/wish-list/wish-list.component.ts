@@ -21,18 +21,26 @@ export class WishListComponent implements OnInit {
         {
           name: 'Machine Gun Preacher',
           price: 7.35,
-          image: ''
+          image: 'http://www.richardcrouse.ca//wp-content/uploads/2013/09/machine-gun-preacher-poster.jpeg'
         },
         {
             name: 'LEGO Mindstorms EV3',
             price: 349.95,
-            image: ''
+            image: 'https://prodimage.images-bn.com/pimages/0673419193054_p0_v1_s550x406.jpg'
         }
       ]
     });
 
+    /*
     console.log(this.wishList.items.length);
     this.wishList.items.map(item => console.log(item));
+    */
+
+    /*
+    setInterval(() => {
+      this.wishList.items[0].changePrice(this.wishList.items[0].price + 1);
+    }, 1000);
+    */
   }
 
 }

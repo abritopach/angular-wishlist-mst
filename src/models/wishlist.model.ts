@@ -1,4 +1,5 @@
 import { types } from 'mobx-state-tree';
+import remotedev from 'mobx-remotedev';
 
 // https://egghead.io/courses/manage-application-state-with-mobx-state-tree
 
@@ -37,4 +38,3 @@ export const WishList = types.model({
         return self.items.reduce((sum, entry) => sum + entry.price, 0);
     }
 }));
-

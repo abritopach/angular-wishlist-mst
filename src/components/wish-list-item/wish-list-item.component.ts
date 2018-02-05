@@ -11,7 +11,7 @@ export class WishListItemComponent implements OnInit, OnChanges {
   wishListItem: any;
 
   @Input('item') set item(item: any) {
-    console.log(item);
+    // console.log(item);
     this.wishListItem = item;
   }
 
@@ -23,7 +23,7 @@ export class WishListItemComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['item']);
+    // console.log(changes['item']);
   }
 
 }
