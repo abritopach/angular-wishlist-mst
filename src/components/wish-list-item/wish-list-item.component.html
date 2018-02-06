@@ -1,4 +1,4 @@
-<div *ngIf="wishListItem">
+<div *ngIf="wishListItem && !isEditing">
   <!--<mat-card-header>-->
     <!--<img mat-card-avatar [src]="wishListItem.image">-->
     <mat-card-title-group>
@@ -13,5 +13,14 @@
     <p>Something pretty...</p>
   </mat-card-content>
   -->
+  <mat-card-actions align="start">
+    <button mat-button (click)="onToggleEdit()"><mat-icon>mode_edit</mat-icon> Edit</button>
+  </mat-card-actions>
+</div>
+
+<div *ngIf="wishListItem && isEditing">
+  <app-wish-list-item-edit [item]="cloneItem"></app-wish-list-item-edit>
+  <button mat-button (click)="onSaveEdit()"><mat-icon>check</mat-icon> Save</button>
+  <button mat-button (click)="onCancelEdit()"><mat-icon>clear</mat-icon> Cancel</button>
 </div>
 

@@ -1,11 +1,13 @@
-<div class="form-wish-list-item">
-  <mat-form-field>
-    <input matInput placeholder="Thing" (keyup)="onChangeName($event)">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Price">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Image">
-  </mat-form-field>
-</div>
+<form #editForm="ngForm">
+  <div class="form-wish-list-item">
+    <mat-form-field>
+      <input #name="ngModel" [ngModel]="wishListItem?.name" type="text" name="name" matInput placeholder="Thing" (keyup)="onChangeName($event)">
+    </mat-form-field>
+    <mat-form-field>
+      <input #price="ngModel" [ngModel]="wishListItem?.price" type="number" name="price" matInput placeholder="Price" (keyup)="onChangePrice($event)">
+    </mat-form-field>
+    <mat-form-field>
+      <input #myimage="ngModel" [ngModel]="wishListItem?.image" type="text" name="myimage" matInput placeholder="Image" (keyup)="onChangeImage($event)">
+    </mat-form-field>
+  </div>
+</form>

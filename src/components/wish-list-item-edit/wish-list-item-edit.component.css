@@ -1,8 +1,12 @@
+form {
+  height: 100%;
+}
+
 .form-wish-list-item {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
   
-  .example-container > * {
-    width: 100%;
-  }
+.example-container > * {
+  width: 100%;
+}

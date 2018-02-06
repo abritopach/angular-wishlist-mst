@@ -8,6 +8,8 @@ import 'hammerjs';
 // Angular material components module.
 import { MyCustomMaterialModule } from './material.module';
 
+import { FormsModule} from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { WishListItemComponent } from '../components/wish-list-item/wish-list-item.component';
 import { WishListComponent } from '../components/wish-list/wish-list.component';
@@ -24,7 +26,8 @@ import { WishListItemEditComponent } from '../components/wish-list-item-edit/wis
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MyCustomMaterialModule
+    MyCustomMaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
