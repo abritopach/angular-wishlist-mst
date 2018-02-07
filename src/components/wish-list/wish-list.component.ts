@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { WishList } from '../../models/wishlist.model';
 
+import { onSnapshot } from 'mobx-state-tree';
+
 @Component({
   selector: 'app-wish-list',
   templateUrl: './wish-list.component.html',
@@ -16,7 +18,8 @@ export class WishListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.wishList = WishList.create({
+
+    let initialState = {
       items: [
         {
           name: 'Machine Gun Preacher',
@@ -29,6 +32,20 @@ export class WishListComponent implements OnInit {
             image: 'https://prodimage.images-bn.com/pimages/0673419193054_p0_v1_s550x406.jpg'
         }
       ]
+    };
+
+    if (localStorage.getItem('wishlistapp')) {
+      const json = JSON.parse(localStorage.getItem('wishlistapp'));
+      if (WishList.is(json)) {
+        initialState = json;
+      }
+    }
+
+    this.wishList = WishList.create(initialState);
+
+    onSnapshot(this.wishList, snapshot => {
+      console.log('onSnapshot', snapshot);
+      localStorage.setItem('wishlistapp', JSON.stringify(snapshot));
     });
 
     /*
