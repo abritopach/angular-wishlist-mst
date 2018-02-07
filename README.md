@@ -1,15 +1,12 @@
-# AngularWishlistMst
+# Angular-Wishlist-Mst
+
+Sample project that shows how to manage application state with Mobx-state-tree in Angular.
+
+This example is based on the example ["Manage Application State with Mobx-state-tree in React by Michel Weststrate"](https://egghead.io/courses/manage-application-state-with-mobx-state-tree) that I modified and adapted to Angular to practice my skills.
+
+Technologies: Mobx-state-tree, Mobx, Mobx-angular, Angular, Typescript, Angular Material.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
-
-Debugging MobX
-
-To turn on / off the debug tool, open developer tools' console, and run:
-
-`
-mobxAngularDebug(true) // turn on
-mobxAngularDebug(false) // turn off
-`
 
 ## Development server
 
@@ -31,6 +28,30 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Requirements
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* [Node.js](http://nodejs.org/)
+* [Angular cli](https://github.com/angular/angular-cli)
+
+## Debugging MobX
+
+To turn on / off the debug tool, open developer tools' console, and run:
+
+``` bash
+# Turn on.
+mobxAngularDebug(true)
+# Turn off.
+mobxAngularDebug(false)
+```
+
+## License
+   
+The MIT License (MIT) Copyright (c)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   
+Original work Copyright (c) 2018 Adrián Brito
