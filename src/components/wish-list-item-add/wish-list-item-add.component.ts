@@ -13,6 +13,7 @@ export class WishListItemAddComponent implements OnInit {
   wishList: any;
   @Input('list') set list(wishList: any) {
     this.wishList = wishList;
+    // console.log(this.wishList);
   }
 
   constructor() { }

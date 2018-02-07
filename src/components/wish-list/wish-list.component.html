@@ -1,16 +1,18 @@
 <div *mobxAutorun>
-<mat-form-field>
-  <mat-select placeholder="Users">
-    <mat-option *ngFor="let user of group.users.values()" [value]="user.id">
-      {{ user.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<div class="list">
-  <mat-card *ngFor="let item of wishList.items">
-      <app-wish-list-item [item]="item"></app-wish-list-item>
-  </mat-card>
-  <p>Total: {{wishList.getTotalPrice()}} €</p>
-  <app-wish-list-item-add [list]="wishList"></app-wish-list-item-add>
-</div>
+  <mat-form-field>
+    <mat-select placeholder="Users" (change)="onChange($event.value)">
+      <mat-option *ngFor="let user of group.users.values()" [value]="user">
+        {{ user.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="selectedUser">
+    <div class="list" *ngIf="selectedUser.wishList">
+      <mat-card *ngFor="let item of selectedUser.wishList.items">
+          <app-wish-list-item [item]="item"></app-wish-list-item>
+      </mat-card>
+      <p>Total: {{selectedUser.wishList.getTotalPrice()}} €</p>
+    </div>
+    <app-wish-list-item-add [list]="selectedUser.wishList"></app-wish-list-item-add>
+  </div>
 </div>

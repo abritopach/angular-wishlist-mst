@@ -25,6 +25,7 @@ export class WishListComponent implements OnInit {
   ngOnInit() {
 
     const initialState = {
+      /*
       items: [
         {
           name: 'Machine Gun Preacher',
@@ -37,6 +38,7 @@ export class WishListComponent implements OnInit {
             image: 'https://prodimage.images-bn.com/pimages/0673419193054_p0_v1_s550x406.jpg'
         }
       ],
+      */
       users: {
         '5a7aee01c61a7b598b1b03a4': {
           id: '5a7aee01c61a7b598b1b03a4',
@@ -86,10 +88,6 @@ export class WishListComponent implements OnInit {
       }
     };
 
-    this.group = Group.create({
-      users: initialState.users
-    });
-
     /*
     console.log(this.group.users.values());
     this.group.users.values().map(user => console.log( user.name));
@@ -97,15 +95,21 @@ export class WishListComponent implements OnInit {
 
     if (localStorage.getItem('wishlistapp')) {
       const json = JSON.parse(localStorage.getItem('wishlistapp'));
-      if (WishList.is(json)) {
-        // console.log(json);
-        initialState.items = json.items;
+      // if (WishList.is(json)) {
+      if (Group.is(json)) {
+        console.log(json);
+        // initialState.items = json.items;
+        initialState.users = json.users;
       }
     }
 
-    this.wishList = WishList.create(initialState);
+    // this.wishList = WishList.create(initialState);
+    this.group = Group.create({
+      users: initialState.users
+    });
 
-    onSnapshot(this.wishList, snapshot => {
+    // onSnapshot(this.wishList, snapshot => {
+    onSnapshot(this.group, snapshot => {
       console.log('onSnapshot', snapshot);
       localStorage.setItem('wishlistapp', JSON.stringify(snapshot));
     });
@@ -120,6 +124,11 @@ export class WishListComponent implements OnInit {
       this.wishList.items[0].changePrice(this.wishList.items[0].price + 1);
     }, 1000);
     */
+  }
+
+  onChange(user) {
+    // console.log(user);
+    this.selectedUser = user;
   }
 
 }
