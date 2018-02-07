@@ -1,4 +1,4 @@
-import { types } from 'mobx-state-tree';
+import { types, getParent, destroy } from 'mobx-state-tree';
 import remotedev from 'mobx-remotedev';
 
 // https://egghead.io/courses/manage-application-state-with-mobx-state-tree
@@ -14,7 +14,6 @@ export const WishListItem = types.model({
     price: types.number,
     image: types.optional(types.string, '')
 }).actions(self => ({
-
     changeName(newName) {
         self.name = newName;
     },
@@ -23,6 +22,9 @@ export const WishListItem = types.model({
     },
     changeImage(newImage) {
         self.image = newImage;
+    },
+    remove() {
+        getParent(self, 2).remove(self);
     }
 }));
 
@@ -32,6 +34,10 @@ export const WishList = types.model({
 }).actions(self => ({
     add(item) {
         self.items.push(item);
+    },
+    remove(item) {
+        // self.items.splice(self.items.indexOf(item), 1);
+        destroy(item);
     }
 })).views(self => ({
     getTotalPrice() {
