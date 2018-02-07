@@ -4,7 +4,7 @@
     <mat-card-title-group>
       <mat-card-title>{{wishListItem.name}}</mat-card-title>
       <mat-card-subtitle>{{wishListItem.price}} €</mat-card-subtitle>
-      <img mat-card-md-image [src]="wishListItem.image">
+      <img mat-card-md-image [src]="wishListItem.image" *ngIf="wishListItem.image">
     </mat-card-title-group>
   <!--</mat-card-header>-->
   <!--
