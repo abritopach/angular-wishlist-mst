@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
+import { MobxAngularModule } from 'mobx-angular';
+
 // Gesture support for some angular material components.
 import 'hammerjs';
 
@@ -29,7 +31,8 @@ import { WishListItemAddComponent } from '../components/wish-list-item-add/wish-
     BrowserModule,
     BrowserAnimationsModule,
     MyCustomMaterialModule,
-    FormsModule
+    FormsModule,
+    MobxAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]

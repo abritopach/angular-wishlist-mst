@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
+Debugging MobX
+
+To turn on / off the debug tool, open developer tools' console, and run:
+
+`
+mobxAngularDebug(true) // turn on
+mobxAngularDebug(false) // turn off
+`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
