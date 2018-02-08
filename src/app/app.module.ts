@@ -17,6 +17,8 @@ import { WishListItemComponent } from '../components/wish-list-item/wish-list-it
 import { WishListComponent } from '../components/wish-list/wish-list.component';
 import { WishListItemEditComponent } from '../components/wish-list-item-edit/wish-list-item-edit.component';
 import { WishListItemAddComponent } from '../components/wish-list-item-add/wish-list-item-add.component';
+import { HeaderComponent } from '../components/common/header/header.component';
+import { FooterComponent } from '../components/common/footer/footer.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { WishListItemAddComponent } from '../components/wish-list-item-add/wish-
     WishListItemComponent,
     WishListComponent,
     WishListItemEditComponent,
-    WishListItemAddComponent
+    WishListItemAddComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
