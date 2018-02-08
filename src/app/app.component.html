@@ -1,10 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Manage Application State with Mobx-state-tree in Angular
-  </h1>
-  <img alt="MST Angular" src="assets/img/mst-angular.png">
-  <h2>WishList</h2>
-  <app-wish-list></app-wish-list>
+<div style="text-align:center" class="page-wrap">
+  <!-- Header. -->
+  <mat-toolbar color="primary">
+    <span>Angular-WishList-MST</span>
+  </mat-toolbar>
+  <main class="content">
+    <h1>
+      Manage Application State with Mobx-state-tree in Angular
+    </h1>
+    <h1><img alt="MST Angular" src="assets/img/mst-angular.png" width="252" height="134"></h1>
+    <h2>WishList</h2>
+    <app-wish-list></app-wish-list>
+  </main>
+  <!-- Footer. -->
+  <footer>
+      <mat-toolbar-row color="primary">
+          <span>© Copyright {{ currentYear }} Adrián Brito Pacheco <a href="https://github.com/abritopach" target="_blank">GitHub</a></span>
+      </mat-toolbar-row>
+  </footer>
 </div>
 
