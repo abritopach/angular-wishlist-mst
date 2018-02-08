@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import { WishList } from '../../models/wishlist.model';
 import { Group } from '../../models/group.model';
 
-import { onSnapshot } from 'mobx-state-tree';
+import { onSnapshot, addMiddleware } from 'mobx-state-tree';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,12 +17,13 @@ export class WishListComponent implements OnInit {
   selectedUser: any;
   group: any;
 
-  constructor() {
+  constructor(private ref: ChangeDetectorRef) {
     console.log('Hello WishListComponent');
     this.selectedUser = null;
   }
 
   ngOnInit() {
+    console.log('ngOninit WishListComponent');
 
     const initialState = {
       /*
@@ -97,7 +98,7 @@ export class WishListComponent implements OnInit {
       const json = JSON.parse(localStorage.getItem('wishlistapp'));
       // if (WishList.is(json)) {
       if (Group.is(json)) {
-        console.log(json);
+        // console.log(json);
         // initialState.items = json.items;
         initialState.users = json.users;
       }
@@ -106,6 +107,11 @@ export class WishListComponent implements OnInit {
     // this.wishList = WishList.create(initialState);
     this.group = Group.create({
       users: initialState.users
+    });
+
+    addMiddleware(this.group, (call, next) => {
+      console.log(`[${call.type}] ${call.name}`);
+      return next(call);
     });
 
     // onSnapshot(this.wishList, snapshot => {
@@ -129,6 +135,15 @@ export class WishListComponent implements OnInit {
   onChange(user) {
     // console.log(user);
     this.selectedUser = user;
+  }
+
+  onClickGetSuggestions() {
+    console.log('onClickGetSuggestions');
+    this.selectedUser.getSuggestions();
+    setInterval(() => {
+      // The following is required, otherwise the view will not be updated.
+      this.ref.markForCheck();
+    }, 500);
   }
 
 }

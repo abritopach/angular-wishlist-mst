@@ -14,7 +14,7 @@ export class WishListItemComponent implements OnInit, OnChanges {
   cloneItem: any;
 
   @Input('item') set item(item: any) {
-    // console.log(item);
+    // console.log('WishListItemComponent item', item);
     this.wishListItem = item;
     this.cloneItem = clone(item);
   }
