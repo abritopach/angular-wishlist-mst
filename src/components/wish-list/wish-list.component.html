@@ -6,6 +6,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <button mat-raised-button color="accent" (click)="group.drawLots()"><mat-icon>shopping_basket</mat-icon> Draw lots</button>
   <div *ngIf="selectedUser">
     <div class="list" *ngIf="selectedUser.wishList.items.length != 0">
       <mat-card *ngFor="let item of selectedUser.wishList.items">
@@ -14,7 +15,19 @@
       <p>Total: {{selectedUser.wishList.getTotalPrice()}} €</p>
     </div>
     <app-wish-list-item-add [list]="selectedUser.wishList"></app-wish-list-item-add>
-    <button mat-button (click)="onClickGetSuggestions()"><mat-icon>lightbulb_outline</mat-icon> Suggestions</button>
+    <br>
+    <button mat-raised-button color="accent" (click)="onClickGetSuggestions()"><mat-icon>lightbulb_outline</mat-icon> Suggestions</button>
     <!--<button mat-mini-fab><mat-icon>lightbulb_outline</mat-icon><br/></button>-->
+
+    <!-- Draw lots section. -->
+    <mat-divider style="margin-top:10px"></mat-divider>
+    <h2>WishList {{ selectedUser.recipient.name }}</h2>
+    <div class="list" *ngIf="selectedUser.recipient.wishList.items.length != 0">
+      <mat-card *ngFor="let item of selectedUser.recipient.wishList.items">
+          <app-wish-list-item [item]="item" [readonly]="true"></app-wish-list-item>
+      </mat-card>
+      <p>Total: {{selectedUser.recipient.wishList.getTotalPrice()}} €</p>
+    </div>
   </div>
+  <br>
 </div>

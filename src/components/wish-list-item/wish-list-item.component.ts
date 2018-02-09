@@ -12,11 +12,17 @@ export class WishListItemComponent implements OnInit, OnChanges {
   wishListItem: any;
   isEditing: Boolean = false;
   cloneItem: any;
+  flagReadOnly: Boolean = false;
 
   @Input('item') set item(item: any) {
     // console.log('WishListItemComponent item', item);
     this.wishListItem = item;
     this.cloneItem = clone(item);
+  }
+
+  @Input('readonly') set readonly(readonly: boolean) {
+    // console.log(readonly);
+    this.flagReadOnly = readonly;
   }
 
   constructor() {
