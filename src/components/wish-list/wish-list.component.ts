@@ -151,4 +151,8 @@ export class WishListComponent implements OnInit {
     }, 500);
   }
 
+  onClickReload() {
+    this.group.reload();
+  }
+
 }

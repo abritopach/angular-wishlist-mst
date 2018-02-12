@@ -1,4 +1,5 @@
 <div *mobxAutorun>
+  <button mat-icon-button (click)="onClickReload()"><mat-icon>cached</mat-icon></button>
   <mat-form-field>
     <mat-select placeholder="Users" (change)="onChange($event.value)">
       <mat-option *ngFor="let user of group.users.values()" [value]="user">
