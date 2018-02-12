@@ -104,15 +104,16 @@ export class WishListComponent implements OnInit {
         // initialState.items = json.items;
         initialState.users = json.users;
       }
-    } else {
-      // Load users from server.
-      this.group.load();
     }
 
     // this.wishList = WishList.create(initialState);
     this.group = window['group'] = Group.create({
       users: initialState.users
     });
+    if (!localStorage.getItem('wishlistapp')) {
+      // Load users from server.
+      this.group.load();
+    }
 
     addMiddleware(this.group, (call, next) => {
       console.log(`[${call.type}] ${call.name}`);

@@ -28,10 +28,12 @@ export const User = types.model({
             console.error('Failed to save: ' + e);
         }
     }),
+    /*
     afterCreate() {
         console.log('afterCreate');
         onSnapshot(self, (self as any).save);
     }
+    */
 }));
 
 export const Group = types.model({

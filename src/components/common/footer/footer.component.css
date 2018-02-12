@@ -4,3 +4,7 @@ footer {
     text-align: center;
     height: 64px;
 }
+
+mat-toolbar-row {
+    height: 32px;
+}

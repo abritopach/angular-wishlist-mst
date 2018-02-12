@@ -7,7 +7,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button color="accent" (click)="group.drawLots()"><mat-icon>shopping_basket</mat-icon> Draw lots</button>
+  <!--<button mat-raised-button color="accent" (click)="group.drawLots()"><mat-icon>shopping_basket</mat-icon> Draw lots</button>-->
   <div *ngIf="selectedUser">
     <div class="list" *ngIf="selectedUser.wishList.items.length != 0">
       <mat-card *ngFor="let item of selectedUser.wishList.items">
@@ -17,7 +17,7 @@
     </div>
     <app-wish-list-item-add [list]="selectedUser.wishList"></app-wish-list-item-add>
     <br>
-    <button mat-raised-button color="accent" (click)="onClickGetSuggestions()"><mat-icon>lightbulb_outline</mat-icon> Suggestions</button>
+    <!--<button mat-raised-button color="accent" (click)="onClickGetSuggestions()"><mat-icon>lightbulb_outline</mat-icon> Suggestions</button>-->
     <!--<button mat-mini-fab><mat-icon>lightbulb_outline</mat-icon><br/></button>-->
 
     <!-- Draw lots section. -->
@@ -31,4 +31,9 @@
     </div>
   </div>
   <br>
+  <ngc-float-button icon="add" direction="bottom" color="#ec5281">
+    <ngc-float-item-button icon="shopping_basket" content="Draw lots" (click)="group.drawLots()"></ngc-float-item-button>
+    <ngc-float-item-button icon="add_circle_outline" content="Add WishList item"></ngc-float-item-button>
+    <ngc-float-item-button icon="lightbulb_outline" content="Suggestions" (click)="onClickGetSuggestions()"></ngc-float-item-button>
+  </ngc-float-button>
 </div>
