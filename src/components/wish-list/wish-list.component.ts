@@ -41,6 +41,7 @@ export class WishListComponent implements OnInit {
       ],
       */
       users: {
+        /*
         '5a7aee01c61a7b598b1b03a4': {
           id: '5a7aee01c61a7b598b1b03a4',
           name: 'Jordan Gill',
@@ -86,6 +87,7 @@ export class WishListComponent implements OnInit {
           name: 'Alba Foreman',
           gender: 'f'
         }
+        */
       }
     };
 
@@ -102,10 +104,13 @@ export class WishListComponent implements OnInit {
         // initialState.items = json.items;
         initialState.users = json.users;
       }
+    } else {
+      // Load users from server.
+      this.group.load();
     }
 
     // this.wishList = WishList.create(initialState);
-    this.group = Group.create({
+    this.group = window['group'] = Group.create({
       users: initialState.users
     });
 
