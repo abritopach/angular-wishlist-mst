@@ -1,9 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
+import { MatDialog, MatDialogRef } from '@angular/material';
+
 import { WishList } from '../../models/wishlist.model';
 import { Group } from '../../models/group.model';
 
 import { onSnapshot, addMiddleware } from 'mobx-state-tree';
+
+import { WishListItemAddDialogComponent } from '../wish-list-item-add-dialog/wish-list-item-add-dialog.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,7 +21,7 @@ export class WishListComponent implements OnInit {
   selectedUser: any;
   group: any;
 
-  constructor(private ref: ChangeDetectorRef) {
+  constructor(private ref: ChangeDetectorRef, private dialog: MatDialog) {
     console.log('Hello WishListComponent');
     this.selectedUser = null;
   }
@@ -103,6 +107,7 @@ export class WishListComponent implements OnInit {
         // console.log(json);
         // initialState.items = json.items;
         initialState.users = json.users;
+        // console.log(initialState);
       }
     }
 
@@ -110,7 +115,8 @@ export class WishListComponent implements OnInit {
     this.group = window['group'] = Group.create({
       users: initialState.users
     });
-    if (!localStorage.getItem('wishlistapp')) {
+
+    if (localStorage.getItem('wishlistapp') === null) {
       // Load users from server.
       this.group.load();
     }
@@ -154,6 +160,24 @@ export class WishListComponent implements OnInit {
 
   onClickReload() {
     this.group.reload();
+  }
+
+  onClickOpenDialog() {
+    // console.log('onClickOpenDialog');
+    const dialogRef = this.dialog.open(WishListItemAddDialogComponent, {
+      width: '300px',
+      data: {
+        selectedUser: this.selectedUser
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('result', result);
+      setInterval(() => {
+        // The following is required, otherwise the view will not be updated.
+        this.ref.markForCheck();
+      }, 500);
+    });
   }
 
 }

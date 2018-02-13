@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { WishListItem } from '../../models/wishlist.model';
 
+import { MatDialogRef } from '@angular/material';
+
+import { WishListItemAddDialogComponent } from '../wish-list-item-add-dialog/wish-list-item-add-dialog.component';
+
 @Component({
   selector: 'app-wish-list-item-add',
   templateUrl: './wish-list-item-add.component.html',
@@ -16,7 +20,8 @@ export class WishListItemAddComponent implements OnInit {
     // console.log(this.wishList);
   }
 
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<WishListItemAddDialogComponent>) {
+   }
 
   ngOnInit() {
     this.entry = WishListItem.create({
@@ -26,12 +31,13 @@ export class WishListItemAddComponent implements OnInit {
   }
 
   onAdd() {
-    console.log('onAdd');
+    console.log('onAdd', this.wishList);
     this.wishList.add(this.entry);
     this.entry = WishListItem.create({
       name: '',
       price: 0
     });
+    this.dialogRef.close('Dialog closed');
   }
 
 }

@@ -15,14 +15,15 @@
       </mat-card>
       <p>Total: {{selectedUser.wishList.getTotalPrice()}} €</p>
     </div>
+    <!--
     <app-wish-list-item-add [list]="selectedUser.wishList"></app-wish-list-item-add>
     <br>
+
     <!--<button mat-raised-button color="accent" (click)="onClickGetSuggestions()"><mat-icon>lightbulb_outline</mat-icon> Suggestions</button>-->
-    <!--<button mat-mini-fab><mat-icon>lightbulb_outline</mat-icon><br/></button>-->
 
     <!-- Draw lots section. -->
     <mat-divider style="margin-top:10px"></mat-divider>
-    <h2>WishList {{ selectedUser.recipient.name }}</h2>
+    <h2>WishList for {{ selectedUser.recipient.name }}</h2>
     <div class="list" *ngIf="selectedUser.recipient.wishList.items.length != 0">
       <mat-card *ngFor="let item of selectedUser.recipient.wishList.items">
           <app-wish-list-item [item]="item" [readonly]="true"></app-wish-list-item>
@@ -31,9 +32,9 @@
     </div>
   </div>
   <br>
-  <ngc-float-button icon="add" direction="bottom" color="#ec5281">
+  <ngc-float-button icon="add" direction="bottom" color="#ec5281" *ngIf="selectedUser">
     <ngc-float-item-button icon="shopping_basket" content="Draw lots" (click)="group.drawLots()"></ngc-float-item-button>
-    <ngc-float-item-button icon="add_circle_outline" content="Add WishList item"></ngc-float-item-button>
+    <ngc-float-item-button icon="add_circle_outline" content="Add WishList item" (click)="onClickOpenDialog()"></ngc-float-item-button>
     <ngc-float-item-button icon="lightbulb_outline" content="Suggestions" (click)="onClickGetSuggestions()"></ngc-float-item-button>
   </ngc-float-button>
 </div>

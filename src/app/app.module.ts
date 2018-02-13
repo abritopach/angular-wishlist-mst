@@ -19,6 +19,8 @@ import { WishListItemEditComponent } from '../components/wish-list-item-edit/wis
 import { WishListItemAddComponent } from '../components/wish-list-item-add/wish-list-item-add.component';
 import { HeaderComponent } from '../components/common/header/header.component';
 import { FooterComponent } from '../components/common/footer/footer.component';
+import { WishListItemAddDialogComponent } from '../components/wish-list-item-add-dialog/wish-list-item-add-dialog.component';
+import { MatDialogRef } from '@angular/material';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { FooterComponent } from '../components/common/footer/footer.component';
     WishListItemEditComponent,
     WishListItemAddComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    WishListItemAddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,10 @@ import { FooterComponent } from '../components/common/footer/footer.component';
     FormsModule,
     MobxAngularModule
   ],
-  providers: [],
+  entryComponents: [WishListItemAddDialogComponent],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,10 +40,12 @@ export const Group = types.model({
     users: types.map(User)
 })
 .actions(self => ({
+    /*
     afterCreate() {
         console.log('afterCreate');
         (self as any).load();
     },
+    */
     load: flow(function* load() {
         console.log('load');
         // TODO
