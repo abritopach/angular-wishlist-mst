@@ -2,7 +2,9 @@ import { types, flow, getParent, applySnapshot, getSnapshot, onSnapshot } from '
 
 import { WishList } from './wishlist.model';
 
-export const User = types.model({
+import { createStorable } from './storable.model';
+
+export const User = types.compose(types.model({
     id: types.identifier(),
     name: types.string,
     gender: types.enumeration('gender', ['m', 'f']),
@@ -15,7 +17,7 @@ export const User = types.model({
         const response = yield window.fetch(`http://localhost:3001/suggestions_${self.gender}`);
         const suggestions = yield response.json();
         self.wishList.items.push(...suggestions);
-    }),
+    })/*,
     save: flow(function* save() {
         console.log('save');
         try {
@@ -28,13 +30,14 @@ export const User = types.model({
             console.error('Failed to save: ' + e);
         }
     }),
-    /*
     afterCreate() {
         console.log('afterCreate');
         onSnapshot(self, (self as any).save);
     }
     */
-}));
+})),
+createStorable('users', 'id')
+);
 
 export const Group = types.model({
     users: types.map(User)
