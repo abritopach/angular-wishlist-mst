@@ -10,14 +10,14 @@
   }
    
    
-  /*
-   * Make the Component injected by Router Outlet full height:
-   */
-  main {
-    display: flex;
-    flex-direction: column;
-    > *:not(div) {
-        flex: 1;
-        display: block;
-      }
-  }
+/*
+  * Make the Component injected by Router Outlet full height:
+  */
+main {
+  display: flex;
+  flex-direction: column;
+  > *:not(div) {
+      flex: 1;
+      display: block;
+    }
+}
