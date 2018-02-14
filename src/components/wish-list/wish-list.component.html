@@ -9,8 +9,9 @@
   </mat-form-field>
   <!--<button mat-raised-button color="accent" (click)="group.drawLots()"><mat-icon>shopping_basket</mat-icon> Draw lots</button>-->
   <div *ngIf="selectedUser">
+    <h2>WishList for {{ selectedUser.name }}</h2>
     <div class="list" *ngIf="selectedUser.wishList.items.length != 0">
-      <mat-card *ngFor="let item of selectedUser.wishList.items">
+      <mat-card class="mat-card-user" *ngFor="let item of selectedUser.wishList.items">
           <app-wish-list-item [item]="item"></app-wish-list-item>
       </mat-card>
       <p>Total: {{selectedUser.wishList.getTotalPrice()}} €</p>
@@ -23,9 +24,10 @@
 
     <!-- Draw lots section. -->
     <mat-divider style="margin-top:10px"></mat-divider>
+    <p>{{ selectedUser.name }} has to give {{ selectedUser.recipient.name }} away</p>
     <h2>WishList for {{ selectedUser.recipient.name }}</h2>
     <div class="list" *ngIf="selectedUser.recipient.wishList.items.length != 0">
-      <mat-card *ngFor="let item of selectedUser.recipient.wishList.items">
+      <mat-card class="mat-card-recipient" *ngFor="let item of selectedUser.recipient.wishList.items">
           <app-wish-list-item [item]="item" [readonly]="true"></app-wish-list-item>
       </mat-card>
       <p>Total: {{selectedUser.recipient.wishList.getTotalPrice()}} €</p>

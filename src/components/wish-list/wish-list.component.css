@@ -1,5 +1,10 @@
-.mat-card {
+.mat-card-user {
     border-left: solid 3px #f19550!important;
+    margin-bottom: 10px;
+}
+
+.mat-card-recipient {
+    border-left: solid 3px #b22933!important;
     margin-bottom: 10px;
 }
 
