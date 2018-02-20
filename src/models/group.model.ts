@@ -13,7 +13,7 @@ export const User = types.compose(types.model({
     recipient: types.maybe(types.reference(types.late(() => User)))
 })
 .actions(self => ({
-    getSuggestions: flow(function*() {
+    getSuggestions: flow(function*() { // <- note the star, this a generator function!
         const response = yield window.fetch(`http://localhost:3001/suggestions_${self.gender}`);
         const suggestions = yield response.json();
         self.wishList.items.push(...suggestions);

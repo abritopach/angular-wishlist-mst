@@ -1,5 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+
+import { MyCustomMaterialModule } from './material.module';
+import { WishListItemComponent } from '../components/wish-list-item/wish-list-item.component';
+import { WishListComponent } from '../components/wish-list/wish-list.component';
+import { WishListItemEditComponent } from '../components/wish-list-item-edit/wish-list-item-edit.component';
+import { WishListItemAddComponent } from '../components/wish-list-item-add/wish-list-item-add.component';
+import { HeaderComponent } from '../components/common/header/header.component';
+import { FooterComponent } from '../components/common/footer/footer.component';
+import { WishListItemAddDialogComponent } from '../components/wish-list-item-add-dialog/wish-list-item-add-dialog.component';
+
+import { FormsModule} from '@angular/forms';
+
 // import { initializeSnapshots } from 'jasmine-angular-snapshot-testing';
 
 // initializeSnapshots({
@@ -25,13 +37,21 @@ import { AppComponent } from './app.component';
     * Be aware that if this is set to 'true' snapshot tests will never fail.
     */
     // discardOldSnapshots: false,
-//});
+// });
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MyCustomMaterialModule, FormsModule, ],
       declarations: [
-        AppComponent
+        AppComponent,
+        WishListItemComponent,
+        WishListComponent,
+        WishListItemEditComponent,
+        WishListItemAddComponent,
+        HeaderComponent,
+        FooterComponent,
+        WishListItemAddDialogComponent
       ],
     }).compileComponents();
   }));
@@ -40,6 +60,7 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
+      /*
   it(`should have as title 'app'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
@@ -51,4 +72,5 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
   }));
+  */
 });

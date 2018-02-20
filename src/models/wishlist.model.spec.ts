@@ -56,7 +56,6 @@ it('should add new item to WishList', () => {
     list.items[0].changeName('Book of G.K. Chesterton');
     expect(list.items[0].name).toBe('Book of G.K. Chesterton');
 
-    /*
     expect(getSnapshot(list)).toEqual({
         items: [{
             name: 'Book of G.K. Chesterton',
@@ -64,7 +63,6 @@ it('should add new item to WishList', () => {
             image: ''
         }]
     });
-    */
 
     // expect(getSnapshot(list)).toMatchSnapshot();
 
