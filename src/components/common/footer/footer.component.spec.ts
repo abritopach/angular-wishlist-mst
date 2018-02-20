@@ -22,7 +22,7 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create FooterComponent', () => {
     expect(component).toBeTruthy();
   });
 });

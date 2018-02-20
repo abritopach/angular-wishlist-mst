@@ -24,7 +24,7 @@ describe('WishListItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create WishListItemComponent', () => {
     expect(component).toBeTruthy();
   });
 });

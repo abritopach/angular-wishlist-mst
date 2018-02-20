@@ -55,7 +55,7 @@ export const Group = types.model({
         // const controller = new AbortController();
         // const signal = controller.signal;
         try {
-            const response = yield window.fetch(`http://localhost:3001/users` /*, { signal } */);
+            const response = yield window.fetch(`http://localhost:3000/users` /*, { signal } */);
             applySnapshot(self.users, yield response.json());
             console.log('Success');
         } catch (e) {

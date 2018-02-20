@@ -8,8 +8,8 @@ export function createStorable(collection, attribute) {
             console.log('save');
             try {
                 console.log(JSON.stringify(getSnapshot(self)));
-                // yield window.fetch(`http://localhost:3001/${collection}/${self[attribute]}`, {
-                yield window.fetch(`http://localhost:3001/${collection}?userID=${self[attribute]}`, {
+                yield window.fetch(`http://localhost:3000/${collection}/${self[attribute]}`, {
+                // yield window.fetch(`http://localhost:3001/${collection}?userID=${self[attribute]}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json'},
                     body: JSON.stringify(getSnapshot(self))
@@ -20,7 +20,7 @@ export function createStorable(collection, attribute) {
         }),
         afterCreate() {
             console.log('afterCreate');
-            // onSnapshot(self, (self as any).save);
+            onSnapshot(self, (self as any).save);
         }
     }));
 }
