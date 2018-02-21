@@ -74,7 +74,13 @@
       "name": "Carey Hodge",
       "gender": "m",
       "wishList": {
-        "items": []
+        "items": [
+          {
+            "name": "Mario Kart 8",
+            "price": 39.99,
+            "image": "https://cdn.forbes.com.mx/2017/06/portada-640x360.jpg"
+          }
+        ]
       },
       "recipient": "5a7aee019ad6ac1d6f9267a5"
     },

@@ -14,14 +14,14 @@ export const User = types.compose(types.model({
 })
 .actions(self => ({
     getSuggestions: flow(function*() { // <- note the star, this a generator function!
-        const response = yield window.fetch(`http://localhost:3001/suggestions_${self.gender}`);
+        const response = yield window.fetch(`http://localhost:3000/suggestions_${self.gender}`);
         const suggestions = yield response.json();
         self.wishList.items.push(...suggestions);
     })/*,
     save: flow(function* save() {
         console.log('save');
         try {
-            yield window.fetch(`http://localhost:3001/users/${self.id}`, {
+            yield window.fetch(`http://localhost:3000/users/${self.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(getSnapshot(self))
@@ -56,10 +56,16 @@ export const Group = types.model({
         // const signal = controller.signal;
         try {
             const response = yield window.fetch(`http://localhost:3000/users` /*, { signal } */);
-            applySnapshot(self.users, yield response.json());
+            // console.log(yield response.json());
+            let result = yield response.json();
+            // Convert array to map.
+            result = result.reduce((map, obj) => (map[obj.id] = obj, map), {});
+            // console.log(result);
+            applySnapshot(self.users, result);
+            // applySnapshot(self.users, yield response.json());
             console.log('Success');
         } catch (e) {
-            console.log('Aborted', e.name);
+            console.log('Aborted', e);
         }
     }),
     reload() {
