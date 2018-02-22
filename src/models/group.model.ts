@@ -4,6 +4,16 @@ import { WishList } from './wishlist.model';
 
 import { createStorable } from './storable.model';
 
+import AbortController from 'abort-controller';
+
+// Cancel/abort an HTTP fetch() request using AbortController. Currently only works in Firefox & Internet Explorer.
+// https://github.com/mysticatea/abort-controller
+/*
+const controller = new AbortController();
+const signal = controller.signal;
+console.log(controller);
+*/
+
 export const User = types.compose(types.model({
     id: types.identifier(),
     name: types.string,
@@ -51,11 +61,9 @@ export const Group = types.model({
     */
     load: flow(function* load() {
         console.log('load');
-        // TODO
-        // const controller = new AbortController();
-        // const signal = controller.signal;
+
         try {
-            const response = yield window.fetch(`http://localhost:3000/users` /*, { signal } */);
+            const response = yield window.fetch(`http://localhost:3000/users`/*, { signal }*/);
             // console.log(yield response.json());
             let result = yield response.json();
             // Convert array to map.
@@ -69,7 +77,12 @@ export const Group = types.model({
         }
     }),
     reload() {
-        // if (controller) controller.abort();
+        /*
+        if ( controller ) {
+            console.log('Now aborting fetch');
+            controller.abort();
+        }
+        */
         (self as any).load();
     },
     beforeDestroy() {
